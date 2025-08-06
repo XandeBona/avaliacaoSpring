@@ -45,6 +45,7 @@ public class UsuarioController {
         return new UsuarioResponseDTO(usuario);
     }
 
+    //Editar usuario
     @PutMapping("/{idUsuario}")
     public UsuarioResponseDTO editarUsuario(@PathVariable Integer idUsuario, @RequestBody UsuarioRequestDTO request) {
         Usuario usuario = usuarioRepository.findById(idUsuario).orElseThrow();
@@ -58,6 +59,7 @@ public class UsuarioController {
         return new UsuarioResponseDTO(usuario);
     }
 
+    //Deletar usuario
     @DeleteMapping("/{idUsuario}")
     public UsuarioResponseDTO removerUsuario(@PathVariable Integer idUsuario) {
         Usuario usuario = usuarioRepository.findById(idUsuario).orElseThrow();
