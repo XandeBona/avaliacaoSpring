@@ -2,19 +2,19 @@ package com.redeSocial.postagem.controllers;
 
 import com.redeSocial.postagem.dtos.CurtidaRequestDTO;
 import com.redeSocial.postagem.dtos.CurtidaResponseDTO;
+import com.redeSocial.postagem.entities.Comentario;
 import com.redeSocial.postagem.entities.Curtida;
 import com.redeSocial.postagem.entities.Postagem;
 import com.redeSocial.postagem.entities.Usuario;
 import com.redeSocial.postagem.repositories.CurtidaRepository;
 import com.redeSocial.postagem.repositories.PostagemRepository;
 import com.redeSocial.postagem.repositories.UsuarioRepository;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
-@RequestMapping("/curtidas")
+@RequestMapping("/postagens/{id}/curtidas")
 public class CurtidaController {
     private final CurtidaRepository curtidaRepository;
     private final UsuarioRepository usuarioRepository;
@@ -39,5 +39,11 @@ public class CurtidaController {
         curtidaRepository.save(novaCurtida);
 
         return new CurtidaResponseDTO(novaCurtida);
+    }
+
+    //Listar curtidas por postagem
+    @GetMapping
+    public List<Curtida> buscarCurtidasDePostagem(@PathVariable Integer id) {
+        return curtidaRepository.findByPostagemId(id);
     }
 }

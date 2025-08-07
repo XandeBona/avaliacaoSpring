@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/comentarios")
+@RequestMapping("/postagens/{idPostagem}/comentarios")
 public class ComentarioController {
     private final ComentarioRepository comentarioRepository;
     private final UsuarioRepository usuarioRepository;
@@ -42,10 +42,11 @@ public class ComentarioController {
         return new ComentarioResponseDTO(novoComentario);
     }
 
-//    //Listar comentario por postagem
-//    @GetMapping("/postagens/{id}/comentarios")
-//    public List<Comentario> buscarComentarioDePostagem(@PathVariable Integer idPostagem) {
-//        Comentario comentario = comentarioRepository.findById(idPostagem);
-//        return comentario;
-//    }
+    //Listar comentarios por postagem
+    @GetMapping
+    public List<Comentario> buscarComentarioDePostagem(@PathVariable Integer idPostagem) {
+        return comentarioRepository.findByPostagemId(idPostagem);
+    }
+
+
 }

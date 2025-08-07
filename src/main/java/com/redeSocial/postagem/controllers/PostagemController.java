@@ -51,5 +51,11 @@ public class PostagemController {
         return new PostagemResponseDTO(postagem);
     }
 
+    //Listar comentario por postagem
+    @GetMapping("/usuarios/{id}/postagens")
+    public List<Postagem> buscarPostagensDeUsuario(@PathVariable Integer id) {
+        return postagemRepository.findByUsuarioId(id);
+    }
+
 
 }
