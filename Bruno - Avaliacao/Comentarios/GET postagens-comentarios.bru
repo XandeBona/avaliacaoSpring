@@ -1,0 +1,15 @@
+meta {
+  name: GET postagens/comentarios
+  type: http
+  seq: 2
+}
+
+get {
+  url: http://localhost:8080/postagens/1/comentarios
+  body: none
+  auth: inherit
+}
+
+settings {
+  encodeUrl: true
+}

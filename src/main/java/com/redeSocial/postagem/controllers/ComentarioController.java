@@ -8,10 +8,9 @@ import com.redeSocial.postagem.entities.Usuario;
 import com.redeSocial.postagem.repositories.ComentarioRepository;
 import com.redeSocial.postagem.repositories.PostagemRepository;
 import com.redeSocial.postagem.repositories.UsuarioRepository;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/comentarios")
@@ -43,4 +42,10 @@ public class ComentarioController {
         return new ComentarioResponseDTO(novoComentario);
     }
 
+//    //Listar comentario por postagem
+//    @GetMapping("/postagens/{id}/comentarios")
+//    public List<Comentario> buscarComentarioDePostagem(@PathVariable Integer idPostagem) {
+//        Comentario comentario = comentarioRepository.findById(idPostagem);
+//        return comentario;
+//    }
 }
