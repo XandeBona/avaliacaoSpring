@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/postagens/{idPostagem}/comentarios")
 public class ComentarioController {
     private final ComentarioRepository comentarioRepository;
     private final UsuarioRepository usuarioRepository;
@@ -26,7 +25,7 @@ public class ComentarioController {
     }
 
     //Adicionar comentario à uma postagem
-    @PostMapping
+    @PostMapping("/comentarios")
     public ComentarioResponseDTO adicionarComentario(@RequestBody ComentarioRequestDTO request) {
         Postagem postagem = postagemRepository.findById(request.getIdPostagem()).orElseThrow();
         Usuario usuario = usuarioRepository.findById(request.getIdUsuario()).orElseThrow();
@@ -43,9 +42,9 @@ public class ComentarioController {
     }
 
     //Listar comentarios por postagem
-    @GetMapping
-    public List<Comentario> buscarComentarioDePostagem(@PathVariable Integer idPostagem) {
-        return comentarioRepository.findByPostagemId(idPostagem);
+    @GetMapping("/postagens/{id}/comentarios")
+    public List<Comentario> buscarComentarioDePostagem(@PathVariable Integer id) {
+        return comentarioRepository.findByPostagemId(id);
     }
 
 

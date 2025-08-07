@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/postagens")
 public class PostagemController {
     private final PostagemRepository postagemRepository;
     private final UsuarioRepository usuarioRepository;
@@ -23,7 +22,7 @@ public class PostagemController {
     }
 
     //Adicionar postagem à um usuario
-    @PostMapping
+    @PostMapping("/postagens")
     public PostagemResponseDTO adicionarPostagem(@RequestBody PostagemRequestDTO request) {
         Usuario usuario = usuarioRepository.findById(request.getIdUsuario()).orElseThrow();
 
@@ -38,13 +37,13 @@ public class PostagemController {
     }
 
     //Listar postagens
-    @GetMapping
+    @GetMapping("/postagens")
     public List<Postagem> listarPostagem() {
         return postagemRepository.findAll();
     }
 
     //Listar postagem por id
-    @GetMapping("/{idPostagem}")
+    @GetMapping("/postagens/{idPostagem}")
     public PostagemResponseDTO buscarPostagemPorId(@PathVariable Integer idPostagem) {
         Postagem postagem = postagemRepository.findById(idPostagem).orElseThrow();
 
