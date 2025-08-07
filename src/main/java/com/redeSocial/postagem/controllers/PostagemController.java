@@ -8,6 +8,8 @@ import com.redeSocial.postagem.repositories.PostagemRepository;
 import com.redeSocial.postagem.repositories.UsuarioRepository;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/postagens")
 public class PostagemController {
@@ -34,5 +36,20 @@ public class PostagemController {
 
         return new PostagemResponseDTO(novaPostagem);
     }
+
+    //Listar postagens
+    @GetMapping
+    public List<Postagem> listarPostagem() {
+        return postagemRepository.findAll();
+    }
+
+    //Listar postagem por id
+    @GetMapping("/{idPostagem}")
+    public PostagemResponseDTO buscarPostagemPorId(@PathVariable Integer idPostagem) {
+        Postagem postagem = postagemRepository.findById(idPostagem).orElseThrow();
+
+        return new PostagemResponseDTO(postagem);
+    }
+
 
 }

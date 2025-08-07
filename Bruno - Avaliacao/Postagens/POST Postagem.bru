@@ -1,0 +1,23 @@
+meta {
+  name: POST Postagem
+  type: http
+  seq: 1
+}
+
+post {
+  url: http://localhost:8080/postagens
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "conteudo": "Lorem2 Lorem2 Lorem2 Lorem2",
+    "dataCriacao": "2024-06-02T20:30:00Z",
+    "idUsuario": 1
+  }
+}
+
+settings {
+  encodeUrl: true
+}
