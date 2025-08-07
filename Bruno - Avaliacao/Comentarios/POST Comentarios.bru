@@ -6,8 +6,17 @@ meta {
 
 post {
   url: http://localhost:8080/comentarios
-  body: none
+  body: json
   auth: inherit
+}
+
+body:json {
+  {
+    "texto": "Muito bom post!",
+    "dataCriacao": "2024-07-02T20:40:00Z",
+    "idUsuario": 1,
+    "idPostagem": 1
+  }
 }
 
 settings {

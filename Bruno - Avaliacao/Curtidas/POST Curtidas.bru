@@ -1,0 +1,22 @@
+meta {
+  name: POST Curtidas
+  type: http
+  seq: 1
+}
+
+post {
+  url: http://localhost:8080/curtidas
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "idPostagem": 1,
+    "idUsuario": 1
+  }
+}
+
+settings {
+  encodeUrl: true
+}
